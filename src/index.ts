@@ -13,12 +13,7 @@ dotenv.config();
 app.use(express.json());
 app.use("/public", express.static("public"));
 app.use(cookieParser());
-app.use(
-  cors({
-    origin: ["http://localhost:3000"],
-    credentials: true,
-  })
-);
+app.use(cors());
 
 process.on("uncaughtException", (ex) => {
   console.log(ex.message, ex);
@@ -31,7 +26,8 @@ process.on("unhandledRejection", (ex: any) => {
 });
 
 //connecting mongoose
-let mongoUrl = process.env.MONGO_URL;
+let mongoUrl =
+  "mongodb+srv://xabibullayevmm:16xm06xm@cluster0.mvuaqog.mongodb.net/?retryWrites=true&w=majority";
 
 if (mongoUrl) {
   mongoose

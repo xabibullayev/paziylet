@@ -16,10 +16,7 @@ dotenv_1.default.config();
 app.use(express_1.default.json());
 app.use("/public", express_1.default.static("public"));
 app.use((0, cookie_parser_1.default)());
-app.use((0, cors_1.default)({
-    origin: ["http://localhost:3000"],
-    credentials: true,
-}));
+app.use((0, cors_1.default)());
 process.on("uncaughtException", (ex) => {
     console.log(ex.message, ex);
     process.exit(1);
@@ -29,7 +26,7 @@ process.on("unhandledRejection", (ex) => {
     process.exit(1);
 });
 //connecting mongoose
-let mongoUrl = process.env.MONGO_URL;
+let mongoUrl = "mongodb+srv://xabibullayevmm:16xm06xm@cluster0.mvuaqog.mongodb.net/?retryWrites=true&w=majority";
 if (mongoUrl) {
     mongoose_1.default
         .connect(mongoUrl)
